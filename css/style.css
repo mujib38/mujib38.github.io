@@ -41,19 +41,19 @@ font-weight:500;
 
 .hero{
     position:relative;
-    width:75%;
-    height:60vh;
+    width:80%;
+    height:80vh;
     overflow:hidden;
 }
 
 .hero .swiper{
-    width:75%;
-    height:60%;
+    width:80%;
+    height:80%;
 }
 
 .hero .swiper-slide img{
-    width:75%;
-    height:60%;
+    width:80%;
+    height:80%;
     object-fit:cover;
 }
 
@@ -61,8 +61,8 @@ font-weight:500;
     position:absolute;
     top:0;
     left:0;
-    width:75%;
-    height:60%;
+    width:80%;
+    height:80%;
     background:rgba(0,0,0,.45);
     z-index:5;
 }
