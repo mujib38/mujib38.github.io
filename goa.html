@@ -3,98 +3,297 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Goa Tour Package | Vacation Planner</title>
+<title>Goa Package — Janmashtami Special | Vacation Planner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Manrope:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --teal-deep:#0D3B39; --teal-mid:#14514C; --teal-line: rgba(250,246,238,0.18);
+    --marigold:#E7A93E; --coral:#E15C3E; --paper:#FAF6EE; --ink:#16211D; --ink-soft:#4B5A54; --cloud:#FFFFFF;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{ background:var(--paper); color:var(--ink); font-family:'Manrope', sans-serif; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 28px;}
+  h1,h2,h3{font-family:'Fraunces', serif; font-weight:600; letter-spacing:-0.01em;}
+  .eyebrow{ font-family:'Space Mono', monospace; font-size:12px; letter-spacing:0.16em; text-transform:uppercase; display:flex; align-items:center; gap:10px; }
+  .eyebrow::before{ content:""; width:22px; height:1px; background:currentColor; display:inline-block; }
+  :focus-visible{ outline: 2px solid var(--coral); outline-offset: 3px; }
+  @media (prefers-reduced-motion: reduce){ *{ animation-duration:0.01ms !important; transition-duration:0.01ms !important; scroll-behavior:auto !important; } }
 
-<link rel="stylesheet" href="css/style.css">
+  header{ position:sticky; top:0; z-index:50; background:rgba(250,246,238,0.92); backdrop-filter: blur(8px); border-bottom:1px solid rgba(22,33,29,0.08); }
+  .nav{ display:flex; align-items:center; justify-content:space-between; height:76px; }
+  .logo{ font-family:'Fraunces', serif; font-weight:700; font-size:20px; display:flex; align-items:center; gap:10px; }
+  .logo .mark{ width:34px; height:34px; border-radius:50%; background:var(--teal-deep); color:var(--marigold); display:flex; align-items:center; justify-content:center; font-family:'Space Mono', monospace; font-size:12px; font-weight:700; transform:rotate(-8deg); }
+  nav.links{ display:flex; align-items:center; gap:34px; }
+  nav.links a{ font-size:14px; font-weight:600; color:var(--ink-soft); }
+  nav.links a:hover{ color:var(--ink); }
+  .btn{ display:inline-flex; align-items:center; gap:9px; font-weight:700; font-size:14px; padding:12px 22px; border-radius:2px; border:1px solid transparent; cursor:pointer; transition:transform .15s ease, box-shadow .15s ease; }
+  .btn-coral{ background:var(--coral); color:var(--cloud); }
+  .btn-coral:hover{ transform:translateY(-2px); box-shadow:0 10px 24px rgba(225,92,62,0.35); }
+  .btn-ghost{ border-color:rgba(22,33,29,0.25); color:var(--ink); }
+  .menu-btn{ display:none; background:none; border:none; font-size:24px; cursor:pointer; }
+
+  .crumb{ padding:22px 0 0; font-size:13px; color:var(--ink-soft); }
+  .crumb a:hover{ color:var(--coral); }
+
+  .p-hero{ background:var(--teal-deep); color:var(--paper); position:relative; overflow:hidden; padding:50px 0 0; margin-top:22px; border-radius:16px; max-width:1180px; margin-left:auto; margin-right:auto; }
+  .p-hero::before{ content:""; position:absolute; inset:0; background-image: radial-gradient(circle at 15% 20%, rgba(231,169,62,0.16), transparent 40%), radial-gradient(circle at 85% 0%, rgba(225,92,62,0.18), transparent 45%); pointer-events:none; }
+  .p-hero-inner{ position:relative; z-index:1; padding:0 46px 46px; display:grid; grid-template-columns:1.1fr 0.9fr; gap:40px; align-items:center; }
+  .p-hero .eyebrow{ color:var(--marigold); margin-bottom:18px; }
+  .p-hero h1{ font-size:clamp(32px,4.4vw,50px); line-height:1.05; }
+  .p-hero p.lede{ margin-top:16px; max-width:42ch; font-size:16px; line-height:1.6; color:rgba(250,246,238,0.78); }
+  .quick-facts{ display:flex; gap:26px; margin-top:28px; flex-wrap:wrap; }
+  .quick-facts div span{ display:block; font-size:11px; letter-spacing:0.06em; color:rgba(250,246,238,0.55); }
+  .quick-facts div b{ font-family:'Fraunces', serif; font-size:19px; color:var(--marigold); }
+  .p-hero-actions{ margin-top:30px; display:flex; gap:14px; flex-wrap:wrap; }
+  .hero-img{ border-radius:12px; overflow:hidden; height:320px; background-size:cover; background-position:center; box-shadow:0 30px 60px rgba(0,0,0,0.35); }
+
+  section{ padding:80px 0; }
+  .section-head{ max-width:640px; margin-bottom:44px; }
+  .section-head .eyebrow{ color:var(--coral); margin-bottom:14px; }
+  .section-head h2{ font-size:clamp(26px,3.2vw,36px); line-height:1.1; }
+  .section-head p{ margin-top:14px; color:var(--ink-soft); font-size:15.5px; line-height:1.6; }
+
+  /* Hotel pricing cards */
+  .hotels{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+  .hotel-card{ background:var(--cloud); border:1px solid rgba(22,33,29,0.08); border-radius:12px; overflow:hidden; display:flex; flex-direction:column; transition:transform .2s ease, box-shadow .2s ease; }
+  .hotel-card:hover{ transform:translateY(-5px); box-shadow:0 20px 36px rgba(13,59,57,0.12); }
+  .hotel-card .h-img{ height:150px; background-size:cover; background-position:center; }
+  .hotel-card .h-body{ padding:20px 22px 24px; flex:1; display:flex; flex-direction:column; }
+  .hotel-card .stars{ color:var(--marigold); font-size:13px; letter-spacing:1px; }
+  .hotel-card h3{ font-size:19px; margin-top:6px; line-height:1.25; }
+  .price-grid{ margin-top:16px; display:flex; flex-direction:column; gap:8px; }
+  .price-row{ display:flex; justify-content:space-between; align-items:center; background:var(--paper); border-radius:6px; padding:9px 12px; }
+  .price-row .lbl{ font-size:11.5px; color:var(--ink-soft); letter-spacing:0.02em; }
+  .price-row .amt{ font-family:'Space Mono', monospace; font-weight:700; font-size:14px; color:var(--teal-deep); }
+  .price-row.main{ background:var(--marigold); }
+  .price-row.main .lbl, .price-row.main .amt{ color:var(--teal-deep); }
+  .hotel-card .btn{ margin-top:18px; width:100%; justify-content:center; }
+
+  /* Info band */
+  .info-band{ display:grid; grid-template-columns:1.3fr 1fr 1fr; gap:0; border:1px solid rgba(22,33,29,0.08); border-radius:12px; overflow:hidden; background:var(--cloud); }
+  .info-col{ padding:28px 26px; border-left:1px solid rgba(22,33,29,0.08); }
+  .info-col:first-child{ border-left:none; }
+  .info-col h4{ font-size:12px; letter-spacing:0.06em; text-transform:uppercase; color:var(--coral); margin-bottom:14px; }
+  .info-col ul{ list-style:none; }
+  .info-col li{ font-size:14px; padding:6px 0; display:flex; gap:9px; align-items:flex-start; }
+  .info-col li.yes::before{ content:"✓"; color:var(--teal-mid); font-weight:700; }
+  .info-col li.pt::before{ content:"📍"; font-size:12px; }
+
+  /* Gallery */
+  .gallery{ display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+  .gallery div{ height:150px; border-radius:8px; background-size:cover; background-position:center; }
+  .gallery div:nth-child(1){ grid-column:span 2; grid-row:span 2; height:314px; }
+
+  .cta-band{ background:var(--marigold); color:var(--teal-deep); border-radius:16px; padding:50px; display:flex; align-items:center; justify-content:space-between; gap:30px; flex-wrap:wrap; }
+  .cta-band h2{ font-size:clamp(24px,3vw,32px); max-width:16ch; }
+  .cta-band .phone{ font-family:'Space Mono', monospace; font-size:15px; margin-top:8px; }
+  .cta-band .btn-coral{ background:var(--teal-deep); }
+
+  footer{ background:var(--ink); color:rgba(250,246,238,0.65); padding:50px 0 30px; }
+  .foot-bottom{ display:flex; justify-content:space-between; padding-top:16px; font-size:12.5px; flex-wrap:wrap; gap:10px; }
+  footer a.logo{ color:var(--paper); }
+  footer p.addr{ margin-top:10px; font-size:13px; max-width:34ch; }
+
+  .wa-float{ position:fixed; bottom:24px; right:24px; z-index:60; background:#25D366; color:#fff; width:56px; height:56px; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 10px 26px rgba(0,0,0,0.25); }
+
+  @media (max-width: 980px){
+    .p-hero-inner{ grid-template-columns:1fr; }
+    .hero-img{ height:220px; }
+    .hotels{ grid-template-columns:1fr; }
+    .info-band{ grid-template-columns:1fr; }
+    .info-col{ border-left:none; border-top:1px solid rgba(22,33,29,0.08); }
+    .info-col:first-child{ border-top:none; }
+    .gallery{ grid-template-columns:repeat(2,1fr); }
+    .gallery div:nth-child(1){ grid-column:span 2; height:220px; }
+  }
+  @media (max-width: 640px){
+    nav.links, .nav .btn-ghost{ display:none; }
+    .menu-btn{ display:block; }
+    .p-hero-inner{ padding:0 22px 30px; }
+    section{ padding:56px 0; }
+    .cta-band{ padding:34px 24px; }
+  }
+</style>
 </head>
-
 <body>
 
-<header class="package-header">
-    <a href="index.html" class="back-btn">← Back to Home</a>
+<header>
+  <div class="wrap nav">
+    <a href="index.html" class="logo"><span class="mark">VP</span> Vacation Planner</a>
+    <nav class="links">
+      <a href="index.html#packages">Packages</a>
+      <a href="index.html#why">Why Us</a>
+      <a href="index.html#reviews">Reviews</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <div style="display:flex; gap:12px; align-items:center;">
+      <a href="tel:+917874969998" class="btn btn-ghost">📞 78749 69998</a>
+      <a href="https://wa.me/917874969962" class="btn btn-coral">Book on WhatsApp</a>
+    </div>
+    <button class="menu-btn" aria-label="Menu">☰</button>
+  </div>
 </header>
 
-<section class="package-hero">
-    <img src="images/goa.jpg" alt="Goa Tour">
+<div class="wrap crumb">
+  <a href="index.html">Home</a> / <a href="index.html#packages">Packages</a> / Goa
+</div>
+
+<section class="p-hero" style="margin-top:16px;">
+  <div class="p-hero-inner">
+    <div>
+      <div class="eyebrow">Janmashtami Special · With Train Tickets 🚆</div>
+      <h1>Celebrate Janmashtami the Goan way.</h1>
+      <p class="lede">Return 3AC train tickets, three night stay and a full day of sightseeing — pick the hotel tier that suits you and we'll handle the rest.</p>
+      <div class="quick-facts">
+        <div><span>DEPARTS</span><b>2nd Sept</b></div>
+        <div><span>DURATION</span><b>3N / 4D</b></div>
+        <div><span>BOARDING</span><b>Surat · Valsad · Vapi</b></div>
+      </div>
+      <div class="p-hero-actions">
+        <a href="https://wa.me/917874969962" class="btn btn-coral">Enquire on WhatsApp →</a>
+        <a href="tel:+917874969998" class="btn btn-ghost">Call 78749 69998</a>
+      </div>
+    </div>
+    <div class="hero-img" style="background-image:url('https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?q=80&w=900&auto=format&fit=crop')"></div>
+  </div>
 </section>
 
-<section class="package-content">
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Choose Your Stay</div>
+      <h2>Three hotels, one great Goa trip.</h2>
+      <p>All rates are per person on twin sharing, with add-on pricing for an extra bed or a child without a bed.</p>
+    </div>
 
-<h1>🌴 Janmashtami Special Goa Package</h1>
+    <div class="hotels">
+      <div class="hotel-card">
+        <div class="h-img" style="background-image:url('https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?q=80&w=600&auto=format&fit=crop')"></div>
+        <div class="h-body">
+          <div class="stars">★★★</div>
+          <h3>Vilmaris Breeze Calangute</h3>
+          <div class="price-grid">
+            <div class="price-row main"><span class="lbl">Per Person</span><span class="amt">₹12,490</span></div>
+            <div class="price-row"><span class="lbl">Extra Bed</span><span class="amt">₹10,990</span></div>
+            <div class="price-row"><span class="lbl">Child (No Bed)</span><span class="amt">₹10,190</span></div>
+          </div>
+          <a href="https://wa.me/917874969962" class="btn btn-coral">Enquire</a>
+        </div>
+      </div>
 
-<h3>Departure Date</h3>
-<p>2 September</p>
+      <div class="hotel-card">
+        <div class="h-img" style="background-image:url('https://images.unsplash.com/photo-1582719508461-905c673771fd?q=80&w=600&auto=format&fit=crop')"></div>
+        <div class="h-body">
+          <div class="stars">★★★★</div>
+          <h3>Vilmaris Luxury Hotel</h3>
+          <div class="price-grid">
+            <div class="price-row main"><span class="lbl">Per Person</span><span class="amt">₹13,490</span></div>
+            <div class="price-row"><span class="lbl">Extra Bed</span><span class="amt">₹10,990</span></div>
+            <div class="price-row"><span class="lbl">Child (No Bed)</span><span class="amt">₹9,990</span></div>
+          </div>
+          <a href="https://wa.me/917874969962" class="btn btn-coral">Enquire</a>
+        </div>
+      </div>
 
-<h3>Package Includes</h3>
+      <div class="hotel-card">
+        <div class="h-img" style="background-image:url('https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?q=80&w=600&auto=format&fit=crop')"></div>
+        <div class="h-body">
+          <div class="stars">★★★★</div>
+          <h3>The Ocean Park Resort</h3>
+          <div class="price-grid">
+            <div class="price-row main"><span class="lbl">Per Person</span><span class="amt">₹13,990</span></div>
+            <div class="price-row"><span class="lbl">Extra Bed</span><span class="amt">₹11,590</span></div>
+            <div class="price-row"><span class="lbl">Child (No Bed)</span><span class="amt">₹10,890</span></div>
+          </div>
+          <a href="https://wa.me/917874969962" class="btn btn-coral">Enquire</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-<ul>
-<li>🚆 Return Train Ticket (3AC)</li>
-<li>🏨 03 Nights Accommodation</li>
-<li>🍽️ 03 Breakfast + 03 Dinner</li>
-<li>🚖 Pickup & Drop in AC Vehicle</li>
-<li>🚌 01 Day Sightseeing</li>
-</ul>
+<section style="padding-top:0;">
+  <div class="wrap">
+    <div class="info-band">
+      <div class="info-col">
+        <h4>Inclusions</h4>
+        <ul>
+          <li class="yes">Your destination — Goa — your destination</li>
+          <li class="yes">Return train tickets (3AC)</li>
+          <li class="yes">03 night accommodation</li>
+          <li class="yes">03 breakfast &amp; 03 dinner</li>
+          <li class="yes">Pickup &amp; drop in AC vehicle</li>
+          <li class="yes">01 day sightseeing in AC vehicle</li>
+        </ul>
+      </div>
+      <div class="info-col">
+        <h4>Boarding From</h4>
+        <ul>
+          <li class="pt">Surat</li>
+          <li class="pt">Valsad</li>
+          <li class="pt">Vapi</li>
+        </ul>
+      </div>
+      <div class="info-col">
+        <h4>Return Dropping Point</h4>
+        <ul>
+          <li class="pt">Panvel</li>
+          <li class="pt">Vasai Road</li>
+          <li class="pt">Surat</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
 
-<h2>Hotel Options</h2>
+<section style="padding-top:0;">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Gallery</div>
+      <h2>What Goa looks like</h2>
+    </div>
+    <div class="gallery">
+      <div style="background-image:url('https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?q=80&w=700&auto=format&fit=crop')"></div>
+      <div style="background-image:url('https://images.unsplash.com/photo-1587922546307-776227941871?q=80&w=500&auto=format&fit=crop')"></div>
+      <div style="background-image:url('https://images.unsplash.com/photo-1580889240912-ba7ffce85469?q=80&w=500&auto=format&fit=crop')"></div>
+      <div style="background-image:url('https://images.unsplash.com/photo-1544644181-1484b3fdfc62?q=80&w=500&auto=format&fit=crop')"></div>
+      <div style="background-image:url('https://images.unsplash.com/photo-1590050752117-238cb0fb12b1?q=80&w=500&auto=format&fit=crop')"></div>
+    </div>
+  </div>
+</section>
 
-<div class="hotel-card">
-<h3>Vilmaris Breeze Calangute ⭐⭐⭐</h3>
+<section>
+  <div class="wrap">
+    <div class="cta-band">
+      <div>
+        <div class="eyebrow" style="color:var(--teal-deep);">Limited Seats · 2nd Sept Departure</div>
+        <h2>Reserve your seat before it fills up.</h2>
+        <div class="phone">CALL 78749 69998 · WHATSAPP 78749 69962</div>
+      </div>
+      <a href="https://wa.me/917874969962" class="btn btn-coral">Chat on WhatsApp →</a>
+    </div>
+  </div>
+</section>
 
-<p>Per Person : ₹12,490</p>
+<footer>
+  <div class="wrap">
+    <a href="index.html" class="logo"><span class="mark">VP</span> Vacation Planner</a>
+    <p class="addr">G 31, La Victoria, Near Galaxy Circle, Pal Adajan, Surat</p>
+    <div class="foot-bottom">
+      <span>© 2026 Vacation Planner. All rights reserved.</span>
+      <span>Surat, Gujarat</span>
+    </div>
+  </div>
+</footer>
 
-<p>Extra Bed : ₹10,990</p>
-
-<p>Child No Bed : ₹10,190</p>
-
-</div>
-
-<div class="hotel-card">
-
-<h3>Vilmaris Luxury Hotel ⭐⭐⭐⭐</h3>
-
-<p>Per Person : ₹13,490</p>
-
-<p>Extra Bed : ₹10,990</p>
-
-<p>Child No Bed : ₹9,990</p>
-
-</div>
-
-<div class="hotel-card">
-
-<h3>The Ocean Park Resort ⭐⭐⭐⭐</h3>
-
-<p>Per Person : ₹13,990</p>
-
-<p>Extra Bed : ₹11,590</p>
-
-<p>Child No Bed : ₹10,890</p>
-
-</div>
-
-<h3>Boarding Points</h3>
-
-<p>📍 Surat • Valsad • Vapi</p>
-
-<h3>Return Points</h3>
-
-<p>📍 Panvel • Vasai Road • Surat</p>
-
-<h3>Contact</h3>
-
-<p>📞 78749 69998</p>
-
-<p>💬 WhatsApp : 78749 69962</p>
-
-<p>📍 G-31 La Victoria,<br>
-Near Galaxy Circle,<br>
-Pal Adajan, Surat</p>
-
-<a href="https://wa.me/917874969962" class="book-btn">
-Book on WhatsApp
+<a href="https://wa.me/917874969962" class="wa-float" aria-label="Chat on WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="#fff"><path d="M17.6 6.32A7.85 7.85 0 0 0 12.05 4a7.94 7.94 0 0 0-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 0 0 3.85 1h0a7.94 7.94 0 0 0 7.94-7.94 7.9 7.9 0 0 0-2.4-5.64Zm-5.55 12.2h0a6.6 6.6 0 0 1-3.36-.92l-.24-.14-2.5.65.67-2.43-.16-.25a6.6 6.6 0 1 1 5.6 3.09Zm3.62-4.94c-.2-.1-1.17-.58-1.35-.64s-.32-.1-.45.1-.5.64-.62.78-.23.15-.43.05a5.4 5.4 0 0 1-1.6-.98 6 6 0 0 1-1.1-1.37c-.12-.2 0-.3.09-.4.09-.1.2-.24.3-.36.1-.12.13-.2.2-.34a.37.37 0 0 0 0-.35c0-.1-.45-1.08-.62-1.48-.16-.38-.33-.33-.45-.34h-.38a.74.74 0 0 0-.53.25 2.24 2.24 0 0 0-.7 1.67c0 1 .72 1.94.82 2.08.1.14 1.4 2.15 3.4 3 .47.2.85.32 1.13.42.48.15.9.13 1.25.08.38-.06 1.17-.48 1.33-.94.17-.46.17-.86.12-.94-.05-.08-.18-.13-.37-.23Z"/></svg>
 </a>
-
-</section>
 
 </body>
 </html>
