@@ -3,113 +3,241 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Igatpuri Weekend Gateway | Vacation Planner</title>
+<title>Igatpuri Weekend Gateway — Independence Day Special | Vacation Planner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Manrope:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --teal-deep:#0D3B39; --teal-mid:#14514C; --teal-line: rgba(250,246,238,0.18);
+    --marigold:#E7A93E; --coral:#E15C3E; --paper:#FAF6EE; --ink:#16211D; --ink-soft:#4B5A54; --cloud:#FFFFFF;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{ background:var(--paper); color:var(--ink); font-family:'Manrope', sans-serif; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 28px;}
+  h1,h2,h3{font-family:'Fraunces', serif; font-weight:600; letter-spacing:-0.01em;}
+  .eyebrow{ font-family:'Space Mono', monospace; font-size:12px; letter-spacing:0.16em; text-transform:uppercase; display:flex; align-items:center; gap:10px; }
+  .eyebrow::before{ content:""; width:22px; height:1px; background:currentColor; display:inline-block; }
+  :focus-visible{ outline: 2px solid var(--coral); outline-offset: 3px; }
+  @media (prefers-reduced-motion: reduce){ *{ animation-duration:0.01ms !important; transition-duration:0.01ms !important; scroll-behavior:auto !important; } }
 
-<link rel="stylesheet" href="css/style.css">
+  header{ position:sticky; top:0; z-index:50; background:rgba(250,246,238,0.92); backdrop-filter: blur(8px); border-bottom:1px solid rgba(22,33,29,0.08); }
+  .nav{ display:flex; align-items:center; justify-content:space-between; height:76px; }
+  .logo{ font-family:'Fraunces', serif; font-weight:700; font-size:20px; display:flex; align-items:center; gap:10px; }
+  .logo .mark{ width:34px; height:34px; border-radius:50%; background:var(--teal-deep); color:var(--marigold); display:flex; align-items:center; justify-content:center; font-family:'Space Mono', monospace; font-size:12px; font-weight:700; transform:rotate(-8deg); }
+  nav.links{ display:flex; align-items:center; gap:34px; }
+  nav.links a{ font-size:14px; font-weight:600; color:var(--ink-soft); }
+  nav.links a:hover{ color:var(--ink); }
+  .btn{ display:inline-flex; align-items:center; gap:9px; font-weight:700; font-size:14px; padding:12px 22px; border-radius:2px; border:1px solid transparent; cursor:pointer; transition:transform .15s ease, box-shadow .15s ease; }
+  .btn-coral{ background:var(--coral); color:var(--cloud); }
+  .btn-coral:hover{ transform:translateY(-2px); box-shadow:0 10px 24px rgba(225,92,62,0.35); }
+  .btn-ghost{ border-color:rgba(22,33,29,0.25); color:var(--ink); }
+  .menu-btn{ display:none; background:none; border:none; font-size:24px; cursor:pointer; }
+
+  .crumb{ padding:22px 0 0; font-size:13px; color:var(--ink-soft); }
+  .crumb a:hover{ color:var(--coral); }
+
+  .p-hero{ background:var(--teal-deep); color:var(--paper); position:relative; overflow:hidden; padding:50px 0 0; margin-top:22px; border-radius:16px; max-width:1180px; margin-left:auto; margin-right:auto; }
+  .p-hero::before{ content:""; position:absolute; inset:0; background-image: radial-gradient(circle at 15% 20%, rgba(231,169,62,0.16), transparent 40%), radial-gradient(circle at 85% 0%, rgba(225,92,62,0.18), transparent 45%); pointer-events:none; }
+  .p-hero-inner{ position:relative; z-index:1; padding:0 46px 46px; display:grid; grid-template-columns:1.1fr 0.9fr; gap:40px; align-items:center; }
+  .p-hero .eyebrow{ color:var(--marigold); margin-bottom:18px; }
+  .p-hero h1{ font-size:clamp(32px,4.4vw,50px); line-height:1.05; }
+  .p-hero p.lede{ margin-top:16px; max-width:42ch; font-size:16px; line-height:1.6; color:rgba(250,246,238,0.78); }
+  .quick-facts{ display:flex; gap:26px; margin-top:28px; flex-wrap:wrap; }
+  .quick-facts div span{ display:block; font-size:11px; letter-spacing:0.06em; color:rgba(250,246,238,0.55); }
+  .quick-facts div b{ font-family:'Fraunces', serif; font-size:19px; color:var(--marigold); }
+  .p-hero-actions{ margin-top:30px; display:flex; gap:14px; flex-wrap:wrap; }
+  .hero-img{ border-radius:12px; overflow:hidden; height:320px; background-size:cover; background-position:center; box-shadow:0 30px 60px rgba(0,0,0,0.35); }
+  .cashback-tag{ display:inline-flex; align-items:center; gap:8px; background:var(--coral); color:var(--cloud); font-size:12px; font-weight:700; padding:8px 14px; border-radius:20px; margin-top:18px; }
+
+  section{ padding:80px 0; }
+  .section-head{ max-width:640px; margin-bottom:44px; }
+  .section-head .eyebrow{ color:var(--coral); margin-bottom:14px; }
+  .section-head h2{ font-size:clamp(26px,3.2vw,36px); line-height:1.1; }
+  .section-head p{ margin-top:14px; color:var(--ink-soft); font-size:15.5px; line-height:1.6; }
+
+  /* Highlights */
+  .highlights{ display:grid; grid-template-columns:repeat(4,1fr); gap:18px; }
+  .highlight{ border-radius:10px; overflow:hidden; position:relative; height:200px; background-size:cover; background-position:center; }
+  .highlight span{ position:absolute; left:0; right:0; bottom:0; padding:14px; font-size:13px; font-weight:700; color:var(--cloud); background:linear-gradient(to top, rgba(13,59,57,0.85), transparent); }
+
+  .layout{ display:grid; grid-template-columns:1.5fr 1fr; gap:56px; align-items:start; }
+
+  .side-card{ background:var(--cloud); border:1px solid rgba(22,33,29,0.08); border-radius:12px; padding:28px; position:sticky; top:96px; }
+  .side-card .price{ font-family:'Fraunces', serif; font-size:34px; }
+  .side-card .price small{ font-family:'Manrope',sans-serif; font-size:13px; color:var(--ink-soft); font-weight:600; }
+  .side-card .btn{ width:100%; justify-content:center; margin-top:18px; }
+  .incl{ margin-top:24px; border-top:1px dashed rgba(22,33,29,0.18); padding-top:20px; }
+  .incl h4{ font-size:12px; letter-spacing:0.06em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:12px; }
+  .incl ul{ list-style:none; }
+  .incl li{ font-size:14px; padding:6px 0; display:flex; gap:10px; }
+  .incl li.yes::before{ content:"✓"; color:var(--teal-mid); font-weight:700; }
+
+  .cta-band{ background:var(--marigold); color:var(--teal-deep); border-radius:16px; padding:50px; display:flex; align-items:center; justify-content:space-between; gap:30px; flex-wrap:wrap; }
+  .cta-band h2{ font-size:clamp(24px,3vw,32px); max-width:16ch; }
+  .cta-band .phone{ font-family:'Space Mono', monospace; font-size:15px; margin-top:8px; }
+  .cta-band .btn-coral{ background:var(--teal-deep); }
+
+  footer{ background:var(--ink); color:rgba(250,246,238,0.65); padding:50px 0 30px; }
+  .foot-bottom{ display:flex; justify-content:space-between; padding-top:16px; font-size:12.5px; flex-wrap:wrap; gap:10px; }
+  footer a.logo{ color:var(--paper); }
+  footer p.addr{ margin-top:10px; font-size:13px; max-width:34ch; }
+
+  .wa-float{ position:fixed; bottom:24px; right:24px; z-index:60; background:#25D366; color:#fff; width:56px; height:56px; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 10px 26px rgba(0,0,0,0.25); }
+
+  @media (max-width: 980px){
+    .p-hero-inner{ grid-template-columns:1fr; }
+    .hero-img{ height:220px; }
+    .highlights{ grid-template-columns:repeat(2,1fr); }
+    .layout{ grid-template-columns:1fr; }
+    .side-card{ position:static; }
+  }
+  @media (max-width: 640px){
+    nav.links, .nav .btn-ghost{ display:none; }
+    .menu-btn{ display:block; }
+    .p-hero-inner{ padding:0 22px 30px; }
+    section{ padding:56px 0; }
+    .cta-band{ padding:34px 24px; }
+    .highlights{ grid-template-columns:1fr 1fr; }
+  }
+</style>
 </head>
-
 <body>
 
-<header class="package-header">
-    <a href="index.html" class="back-btn">← Back to Home</a>
+<header>
+  <div class="wrap nav">
+    <a href="index.html" class="logo"><span class="mark">VP</span> Vacation Planner</a>
+    <nav class="links">
+      <a href="index.html#packages">Packages</a>
+      <a href="index.html#why">Why Us</a>
+      <a href="index.html#reviews">Reviews</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <div style="display:flex; gap:12px; align-items:center;">
+      <a href="tel:+917874969998" class="btn btn-ghost">📞 78749 69998</a>
+      <a href="https://wa.me/917874969998" class="btn btn-coral">Book on WhatsApp</a>
+    </div>
+    <button class="menu-btn" aria-label="Menu">☰</button>
+  </div>
 </header>
 
-<section class="package-hero">
-    <img src="images/igatpuri.jpg" alt="Igatpuri Tour">
+<div class="wrap crumb">
+  <a href="index.html">Home</a> / <a href="index.html#packages">Packages</a> / Igatpuri
+</div>
+
+<section class="p-hero" style="margin-top:16px;">
+  <div class="p-hero-inner">
+    <div>
+      <div class="eyebrow">Weekend Gateway · Igatpuri</div>
+      <h1>Golden pagodas, misty valleys, one weekend away.</h1>
+      <p class="lede">A 56-seater AC bus straight from Surat, 4-star stay and two full days of sightseeing — Camel Valley to Vipassana Pagoda, all covered.</p>
+      <div class="cashback-tag">🇮🇳 Independence Day Special — Upto ₹500 Cashback</div>
+      <div class="quick-facts">
+        <div><span>DEPARTS</span><b>16th Aug 2026</b></div>
+        <div><span>DURATION</span><b>2N / 3D</b></div>
+        <div><span>EX</span><b>Surat</b></div>
+      </div>
+      <div class="p-hero-actions">
+        <a href="https://wa.me/917874969998" class="btn btn-coral">Enquire on WhatsApp →</a>
+        <a href="tel:+917874969998" class="btn btn-ghost">Call 78749 69998</a>
+      </div>
+    </div>
+    <div class="hero-img" style="background-image:url('https://images.unsplash.com/photo-1580289142696-e191ea060cb1?q=80&w=900&auto=format&fit=crop')"></div>
+  </div>
 </section>
 
-<section class="package-content">
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">On The Itinerary</div>
+      <h2>Four stops, one weekend.</h2>
+    </div>
+    <div class="highlights">
+      <div class="highlight" style="background-image:url('https://images.unsplash.com/photo-1470770903676-69b98201ea1c?q=80&w=500&auto=format&fit=crop')"><span>Camel Valley</span></div>
+      <div class="highlight" style="background-image:url('https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=500&auto=format&fit=crop')"><span>Myanmar Gate</span></div>
+      <div class="highlight" style="background-image:url('https://images.unsplash.com/photo-1501554728187-ce583db33af7?q=80&w=500&auto=format&fit=crop')"><span>Bhatsa River</span></div>
+      <div class="highlight" style="background-image:url('https://images.unsplash.com/photo-1518002171953-a080ee817e1f?q=80&w=500&auto=format&fit=crop')"><span>Vipassana Pagoda</span></div>
+    </div>
+  </div>
+</section>
 
-<h1>🏞️ Igatpuri Weekend Gateway</h1>
+<section style="padding-top:0;">
+  <div class="wrap layout">
+    <div>
+      <div class="section-head">
+        <div class="eyebrow">Day By Day</div>
+        <h2>Your itinerary</h2>
+      </div>
+      <div style="position:relative; padding-left:34px;">
+        <div style="position:absolute; left:9px; top:6px; bottom:6px; width:1.5px; background:rgba(22,33,29,0.15);"></div>
+        <div style="position:relative; padding-bottom:34px;">
+          <div style="position:absolute; left:-34px; top:2px; width:20px; height:20px; border-radius:50%; background:var(--paper); border:2px solid var(--coral);"></div>
+          <div class="eyebrow" style="color:var(--coral); font-size:11px;">DAY 1</div>
+          <h3 style="font-size:19px; margin-top:6px;">Departure from Surat &amp; check-in</h3>
+          <p style="margin-top:8px; font-size:14.5px; color:var(--ink-soft); line-height:1.6;">Board the AC bus from Surat, arrive Igatpuri, check into the 4-star property, evening at leisure.</p>
+        </div>
+        <div style="position:relative; padding-bottom:34px;">
+          <div style="position:absolute; left:-34px; top:2px; width:20px; height:20px; border-radius:50%; background:var(--paper); border:2px solid var(--coral);"></div>
+          <div class="eyebrow" style="color:var(--coral); font-size:11px;">DAY 2</div>
+          <h3 style="font-size:19px; margin-top:6px;">Full day sightseeing</h3>
+          <p style="margin-top:8px; font-size:14.5px; color:var(--ink-soft); line-height:1.6;">Camel Valley viewpoint, Myanmar Gate, Bhatsa River and Vipassana Pagoda, with all meals included.</p>
+        </div>
+        <div style="position:relative;">
+          <div style="position:absolute; left:-34px; top:2px; width:20px; height:20px; border-radius:50%; background:var(--paper); border:2px solid var(--coral);"></div>
+          <div class="eyebrow" style="color:var(--coral); font-size:11px;">DAY 3</div>
+          <h3 style="font-size:19px; margin-top:6px;">Check-out &amp; return to Surat</h3>
+          <p style="margin-top:8px; font-size:14.5px; color:var(--ink-soft); line-height:1.6;">Breakfast, check-out, board the return bus back to Surat.</p>
+        </div>
+      </div>
+    </div>
 
-<h3>🇮🇳 Independence Day Special</h3>
+    <div class="side-card">
+      <div class="price">₹5,999<small> / person</small></div>
+      <p style="font-size:13px; color:var(--ink-soft); margin-top:6px;">56-seater AC bus · 4★ property · 2 days sightseeing</p>
+      <a href="https://wa.me/917874969998" class="btn btn-coral">Enquire on WhatsApp</a>
+      <div class="incl">
+        <h4>Included</h4>
+        <ul>
+          <li class="yes">56-seater AC bus, to and fro</li>
+          <li class="yes">Accommodation in 4★ luxury rooms</li>
+          <li class="yes">02 days sightseeing</li>
+          <li class="yes">02 breakfast, 02 lunch, 02 dinner</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
 
-<p style="color:green;font-weight:bold;">
-🎉 Upto ₹500 Cashback
-</p>
+<section>
+  <div class="wrap">
+    <div class="cta-band">
+      <div>
+        <div class="eyebrow" style="color:var(--teal-deep);">Independence Day Special · 16th Aug</div>
+        <h2>Book now, save upto ₹500 cashback.</h2>
+        <div class="phone">CALL 78749 69998 · 63517 20313</div>
+      </div>
+      <a href="https://wa.me/917874969998" class="btn btn-coral">Chat on WhatsApp →</a>
+    </div>
+  </div>
+</section>
 
-<h3>Departure Date</h3>
+<footer>
+  <div class="wrap">
+    <a href="index.html" class="logo"><span class="mark">VP</span> Vacation Planner</a>
+    <p class="addr">G-31, La Victoria, Near Galaxy Circle, Pal Gam, Surat - 394510</p>
+    <div class="foot-bottom">
+      <span>© 2026 Vacation Planner. All rights reserved.</span>
+      <span>Surat, Gujarat</span>
+    </div>
+  </div>
+</footer>
 
-<p>16 August 2026 (Ex-Surat)</p>
-
-<h3>Package Price</h3>
-
-<p style="font-size:28px;color:#ff6600;font-weight:bold;">
-₹5,999 Per Person
-</p>
-
-<h3>Package Includes</h3>
-
-<ul>
-<li>🚌 56 Seater AC Luxury Bus</li>
-<li>🏨 4★ Luxury Property Stay</li>
-<li>🍽️ 2 Breakfast + 2 Lunch + 2 Dinner</li>
-<li>🗺️ 2 Days Sightseeing</li>
-</ul>
-
-<h2>Places Covered</h2>
-
-<div class="hotel-card">
-
-<h3>📍 Camel Valley</h3>
-
-<p>Beautiful valley with breathtaking waterfall views.</p>
-
-</div>
-
-<div class="hotel-card">
-
-<h3>📍 Myanmar Gate</h3>
-
-<p>One of the famous attractions of Igatpuri.</p>
-
-</div>
-
-<div class="hotel-card">
-
-<h3>📍 Bhatsa River</h3>
-
-<p>Scenic riverside views surrounded by lush greenery.</p>
-
-</div>
-
-<div class="hotel-card">
-
-<h3>📍 Vipassana Pagoda</h3>
-
-<p>Peaceful meditation centre and architectural landmark.</p>
-
-</div>
-
-<h3>Departure Point</h3>
-
-<p>📍 Surat (Ex-Surat)</p>
-
-<h3>Stay</h3>
-
-<p>🏨 Premium 4★ Luxury Property</p>
-
-<h3>Meals</h3>
-
-<p>🍽️ 2 Breakfast • 2 Lunch • 2 Dinner</p>
-
-<h3>Contact</h3>
-
-<p>📞 78749 69998</p>
-
-<p>📞 63517 20313</p>
-
-<p>
-📍 G-31 La Victoria,<br>
-Near Galaxy Circle,<br>
-Pal Gam, Surat - 394510
-</p>
-
-<a href="https://wa.me/917874969998" class="book-btn">
-Book on WhatsApp
+<a href="https://wa.me/917874969998" class="wa-float" aria-label="Chat on WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="#fff"><path d="M17.6 6.32A7.85 7.85 0 0 0 12.05 4a7.94 7.94 0 0 0-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 0 0 3.85 1h0a7.94 7.94 0 0 0 7.94-7.94 7.9 7.9 0 0 0-2.4-5.64Zm-5.55 12.2h0a6.6 6.6 0 0 1-3.36-.92l-.24-.14-2.5.65.67-2.43-.16-.25a6.6 6.6 0 1 1 5.6 3.09Zm3.62-4.94c-.2-.1-1.17-.58-1.35-.64s-.32-.1-.45.1-.5.64-.62.78-.23.15-.43.05a5.4 5.4 0 0 1-1.6-.98 6 6 0 0 1-1.1-1.37c-.12-.2 0-.3.09-.4.09-.1.2-.24.3-.36.1-.12.13-.2.2-.34a.37.37 0 0 0 0-.35c0-.1-.45-1.08-.62-1.48-.16-.38-.33-.33-.45-.34h-.38a.74.74 0 0 0-.53.25 2.24 2.24 0 0 0-.7 1.67c0 1 .72 1.94.82 2.08.1.14 1.4 2.15 3.4 3 .47.2.85.32 1.13.42.48.15.9.13 1.25.08.38-.06 1.17-.48 1.33-.94.17-.46.17-.86.12-.94-.05-.08-.18-.13-.37-.23Z"/></svg>
 </a>
-
-</section>
 
 </body>
 </html>
