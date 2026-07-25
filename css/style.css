@@ -290,3 +290,18 @@ border-radius:10px;
     color:inherit;
     display:block;
 }
+.card{
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.card h3,
+.card p{
+    color: #000;
+    text-decoration: none;
+}
+
+.card:hover{
+    text-decoration: none;
+}
